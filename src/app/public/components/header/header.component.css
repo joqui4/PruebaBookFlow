@@ -1,0 +1,85 @@
+/* Estilos de la cabecera */
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  width: 150px;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-right: 2rem;
+  text-decoration: none;
+  color: #333;
+}
+
+nav a:hover {
+  color: #FFA726;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.button-link {
+  background-color: orange;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.button-link:hover {
+  background-color: #ffe8e8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    padding: 1rem;
+    position: absolute;
+    top: 56px; /* Adjust based on your toolbar height */
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  nav.show-menu {
+    display: flex;
+  }
+
+  nav a {
+    margin: 1rem 0;
+  }
+}

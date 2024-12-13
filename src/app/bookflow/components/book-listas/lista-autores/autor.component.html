@@ -1,0 +1,35 @@
+<div class="titulo-container">
+  <div id="titulo">Lista Autores:</div>
+  <a href="/home/Catalogue" class="button-link">Volver</a>
+</div>
+<div class="autor-container">
+  <div class="lista-container">
+    <div class="lista-autores">
+      <mat-card class="author-card" *ngFor="let book of books | slice:0:14">
+        <div class="autor">
+          <div class="autor-img"><img [src]="book.authorImage" alt="Autor"></div>
+          <div class="autor-nombre">{{book.author}}</div>
+          <div class="autor-descripcion">{{book.description}}</div>
+          <div class="autor-follow">
+            <button class="seguir-button" (click)="enviarMensaje()">Seguir</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <!-- Lista 2 -->
+  <div class="lista-container">
+    <div class="lista-autores">
+      <mat-card class="author-card" *ngFor="let book of books | slice:14:28">
+        <div class="autor">
+          <div class="autor-img"><img [src]="book.authorImage" alt="Autor"></div>
+          <div class="autor-nombre">{{book.author}}</div>
+          <div class="autor-descripcion">{{book.description}}</div>
+          <div class="autor-follow">
+            <button class="seguir-button" (click)="enviarMensaje()">Seguir</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
