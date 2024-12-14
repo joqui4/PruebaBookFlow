@@ -7,11 +7,12 @@ import {catchError, EMPTY, Observable, switchMap, tap, throwError} from "rxjs";
   providedIn: 'root'
 })
 export class  BookflowService {
-  baseUrl: string = "http://localhost:3000/api/v1"; // muetsra todos los libros
-  baseUrl2: string = "https://bookflow-app-api.onrender.com/api/v1"; // muestra los libros por isbn
+  baseUrl: string = "http://localhost:8089/api/v1"; // muetsra todos los libros
+  baseUrl2: string = "http://localhost:8089/api/v1"; // muestra los libros por isbn
   constructor(private Http:HttpClient) { }
 
   getBooks(){
+    console.log('estuve aqui')
     return this.Http.get<any>(`${this.baseUrl2}/books`).pipe(
       tap()
     );

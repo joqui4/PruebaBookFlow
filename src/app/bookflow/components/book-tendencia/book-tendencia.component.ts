@@ -26,18 +26,22 @@ export class BookTendenciaComponent implements OnInit {
 
   libros: Book[] = []; // Arreglo para almacenar los libros
 
-  constructor(private bookService: BookflowService, private router: Router) {}
-
-  ngOnInit() {
+  constructor(private bookService: BookflowService, private router: Router) {
+    console.log('BookTendenciaComponent constructor');
     this.getBooks();
   }
 
+  ngOnInit() {
+
+  }
+
   getBooks() {
-    this.bookService.getBooks().subscribe(
-      (data: any[]) => {
+    this.bookService.getBooks().subscribe({
+      next: (data: any[]) => {
+        console.log('API Response:', data);
         if (data && data.length > 0) {
           const filteredBooks = data.filter(book => this.isDesiredBook(book));
-          this.libros = filteredBooks.map((book: any) =>{
+          this.libros = filteredBooks.map((book: any) => {
             return new Book(
               book.bookIsbn,
               book.bookTitle,
@@ -48,16 +52,20 @@ export class BookTendenciaComponent implements OnInit {
               book.bookAuthorImage,
               book.bookPublisher,
               book.amazonBookUrl
-          )});
+            );
+          });
           console.log(this.libros); // Imprime los libros filtrados
         } else {
           console.error('No books data found in the response.');
         }
       },
-      (error) => {
+      error: (error) => {
         console.error('Error retrieving books:', error);
+      },
+      complete: () => {
+        console.log('Book retrieval complete.');
       }
-    );
+    });
   }
 
   isDesiredBook(book: any): boolean {

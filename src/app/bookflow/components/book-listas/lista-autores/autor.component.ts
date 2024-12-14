@@ -35,6 +35,8 @@ export class AutorComponent implements OnInit {
   getBooks() {
     this.bookService.getBooks().subscribe(
       (data: any[]) => {
+        console.log('API Response:', data)
+        console.log(data);
         if (data && data.length > 0) {
           this.books = data.map((book: any) => {
             return new Book(
